@@ -15,7 +15,7 @@ export const FeatureCard = ({ title, description, name }: FeatureCardProps) => {
       className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
     >
       <div className="space-y-3">
-        <span className="text-sm font-medium text-vibe-blue py-1 px-3 bg-blue-50 rounded-full">
+        <span className="text-sm font-medium text-[#2c5dcf] py-1 px-3 bg-[#2c5dcf]/5 rounded-full">
           {name}
         </span>
         <h3 className="text-xl font-semibold text-gray-900">{title}</h3>

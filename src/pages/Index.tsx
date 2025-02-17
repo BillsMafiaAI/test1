@@ -32,12 +32,12 @@ const features = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-vibe-bg font-inter">
+    <div className="min-h-screen bg-[#f6f6f4] font-inter">
       <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 border-b border-gray-100">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <span className="text-xl font-semibold text-vibe-blue">OpenVibe</span>
-            <button className="px-4 py-2 bg-vibe-blue text-white rounded-lg hover:bg-blue-600 transition-colors">
+            <span className="text-xl font-semibold text-[#2c5dcf]">OpenVibe</span>
+            <button className="px-4 py-2 bg-[#2c5dcf] text-white rounded-lg hover:bg-[#2c5dcf]/90 transition-colors">
               Get Started
             </button>
           </div>
@@ -53,7 +53,7 @@ const Index = () => {
             className="text-center max-w-4xl mx-auto space-y-6 mb-20"
           >
             <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 leading-tight">
-              Amplify Your <span className="text-vibe-blue">Vibes</span> with Modern Technology
+              Amplify Your <span className="text-[#2c5dcf]">Vibes</span> with Modern Technology
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               The premier suite of tools designed to enhance your creative flow and productivity. Express yourself freely and explore ideas effortlessly.
