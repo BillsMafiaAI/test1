@@ -86,99 +86,93 @@ const Index = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="bg-gray-900 text-white rounded-2xl p-12 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(44,93,207,0.1),transparent_70%)]" />
+              <div className="bg-[#0B0E18] text-white rounded-2xl p-12 relative overflow-hidden min-h-[600px] flex flex-col items-center justify-center">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(44,93,207,0.05),transparent_70%)]" />
                 
-                <div className="relative z-10">
-                  <div className="flex justify-center items-center mb-12">
-                    <div className="relative w-[600px] h-[300px]">
-                      {/* Central Hub */}
-                      <motion.div
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#2c5dcf] rounded-full flex items-center justify-center"
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{ duration: 3, repeat: Infinity }}
-                      >
-                        <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center">
-                          <span className="text-2xl">🔮</span>
-                        </div>
-                      </motion.div>
-
-                      {/* Orbiting Elements */}
-                      {[0, 72, 144, 216, 288].map((degree, index) => (
-                        <motion.div
-                          key={degree}
-                          className="absolute left-1/2 top-1/2 w-12 h-12 -ml-6 -mt-6"
-                          initial={{ rotate: degree }}
-                          animate={{ 
-                            rotate: [degree, degree + 360],
-                            scale: [1, 1.2, 1]
-                          }}
-                          transition={{ 
-                            rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                            scale: { duration: 2, repeat: Infinity, delay: index * 0.3 }
-                          }}
-                        >
-                          <div 
-                            className="relative w-full h-full"
-                            style={{ transform: `rotate(${-degree}deg)` }}
+                <div className="relative z-10 w-full h-[400px]">
+                  <motion.div
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                    animate={{ 
+                      scale: [1, 1.05, 1],
+                    }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  >
+                    <div className="relative">
+                      <div className="w-20 h-20 rounded-full bg-[#2c5dcf] p-1">
+                        <div className="w-full h-full rounded-full bg-[#0B0E18] flex items-center justify-center">
+                          <motion.span 
+                            className="text-2xl"
+                            animate={{ 
+                              rotate: [0, 360],
+                            }}
+                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                           >
-                            <div className="absolute top-[-60px] left-1/2 -translate-x-1/2 w-8 h-8 bg-white rounded-lg shadow-lg flex items-center justify-center">
-                              {index === 0 && <span>🎙️</span>}
-                              {index === 1 && <span>✅</span>}
-                              {index === 2 && <span>🎨</span>}
-                              {index === 3 && <span>🔍</span>}
-                              {index === 4 && <span>📱</span>}
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-
-                      {/* Connecting Lines */}
-                      <svg className="absolute inset-0 w-full h-full" style={{ transform: 'rotate(0deg)' }}>
-                        {[0, 72, 144, 216, 288].map((degree) => (
-                          <motion.path
-                            key={degree}
-                            d={`M ${300} ${150} L ${300 + Math.cos(degree * Math.PI / 180) * 120} ${150 + Math.sin(degree * Math.PI / 180) * 120}`}
-                            stroke="rgba(44,93,207,0.2)"
-                            strokeWidth="2"
-                            fill="none"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: [0, 1, 0] }}
-                            transition={{ duration: 3, repeat: Infinity, delay: degree / 360 }}
-                          />
-                        ))}
-                      </svg>
-
-                      {/* Particle Effects */}
-                      {[...Array(20)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          className="absolute left-1/2 top-1/2 w-1 h-1 bg-[#2c5dcf] rounded-full"
-                          initial={{ 
-                            x: 0, 
-                            y: 0, 
-                            opacity: 0 
-                          }}
-                          animate={{ 
-                            x: [0, (Math.random() - 0.5) * 200],
-                            y: [0, (Math.random() - 0.5) * 200],
-                            opacity: [0, 1, 0]
-                          }}
-                          transition={{ 
-                            duration: 2 + Math.random() * 2,
-                            repeat: Infinity,
-                            delay: i * 0.2
-                          }}
-                        />
-                      ))}
+                            ✨
+                          </motion.span>
+                        </div>
+                      </div>
+                      <div className="absolute -inset-4 border border-[#2c5dcf]/20 rounded-full" />
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <p className="text-gray-400 font-light text-lg max-w-2xl mx-auto text-center">
-                    Our suite of tools work seamlessly together, creating a powerful ecosystem 
-                    that enhances your productivity and creativity.
-                  </p>
+                  {[
+                    { x: -120, y: -80, delay: 0, icon: "🎙️" },
+                    { x: 120, y: -80, delay: 1, icon: "✅" },
+                    { x: -160, y: 60, delay: 0.5, icon: "🎨" },
+                    { x: 160, y: 60, delay: 1.5, icon: "🔍" },
+                    { x: 0, y: 120, delay: 2, icon: "📱" }
+                  ].map((app, index) => (
+                    <motion.div
+                      key={index}
+                      className="absolute left-1/2 top-1/2"
+                      initial={{ x: app.x, y: app.y }}
+                      animate={{ 
+                        x: [app.x - 10, app.x + 10, app.x],
+                        y: [app.y - 10, app.y + 10, app.y],
+                      }}
+                      transition={{ 
+                        duration: 4, 
+                        repeat: Infinity, 
+                        delay: app.delay 
+                      }}
+                    >
+                      <motion.div 
+                        className="w-12 h-12 bg-white rounded-xl shadow-lg flex items-center justify-center"
+                        whileHover={{ scale: 1.1 }}
+                      >
+                        <span className="text-xl">{app.icon}</span>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+
+                  <svg className="absolute inset-0 w-full h-full">
+                    {[
+                      { x1: "50%", y1: "50%", x2: "35%", y2: "35%" },
+                      { x1: "50%", y1: "50%", x2: "65%", y2: "35%" },
+                      { x1: "50%", y1: "50%", x2: "30%", y2: "65%" },
+                      { x1: "50%", y1: "50%", x2: "70%", y2: "65%" },
+                      { x1: "50%", y1: "50%", x2: "50%", y2: "80%" }
+                    ].map((line, index) => (
+                      <motion.line
+                        key={index}
+                        x1={line.x1}
+                        y1={line.y1}
+                        x2={line.x2}
+                        y2={line.y2}
+                        stroke="rgba(44,93,207,0.2)"
+                        strokeWidth="1"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: [0, 1] }}
+                        transition={{ duration: 2, delay: index * 0.5 }}
+                      />
+                    ))}
+                  </svg>
                 </div>
+
+                <p className="text-gray-400 font-light text-lg max-w-2xl mx-auto text-center mt-8">
+                  Our suite of tools work seamlessly together, creating a powerful ecosystem 
+                  that enhances your productivity and creativity.
+                </p>
               </div>
             </motion.div>
 
