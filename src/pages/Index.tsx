@@ -38,7 +38,7 @@ const features = [
 const Index = () => {
   return (
     <div className="min-h-screen bg-[#f6f6f4] font-inter">
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 border-b border-gray-100">
+      <nav className="fixed top-0 w-full z-50 border-b border-gray-100/50 backdrop-blur-[2px]">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <span className="text-xl font-light text-[#2c5dcf]">OpenVibe</span>
@@ -80,6 +80,40 @@ const Index = () => {
                 </motion.div>
               ))}
             </motion.div>
+
+            <motion.div 
+              className="lg:col-span-3 my-20"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="bg-gray-900 text-white rounded-2xl p-12 text-center">
+                <h2 className="text-4xl font-extralight mb-6">A Complete Ecosystem of Tools</h2>
+                <p className="text-gray-400 font-light text-lg max-w-2xl mx-auto">
+                  Our suite of tools work seamlessly together, creating a powerful ecosystem 
+                  that enhances your productivity and creativity. From voice-to-text to AI-powered 
+                  search, every tool is designed to work in harmony.
+                </p>
+                <div className="mt-8 flex justify-center space-x-4">
+                  <motion.div 
+                    className="w-2 h-2 bg-[#2c5dcf] rounded-full"
+                    animate={{ scale: [1, 1.5, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <motion.div 
+                    className="w-2 h-2 bg-[#2c5dcf] rounded-full"
+                    animate={{ scale: [1.5, 1, 1.5] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <motion.div 
+                    className="w-2 h-2 bg-[#2c5dcf] rounded-full"
+                    animate={{ scale: [1, 1.5, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                </div>
+              </div>
+            </motion.div>
+
             <motion.div
               className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto w-full"
             >
