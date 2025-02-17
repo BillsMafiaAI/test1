@@ -1,10 +1,60 @@
-
-import { Mic, CheckSquare, Palette, Search, Smartphone } from "lucide-react";
+import { Mic, CheckSquare, Image, Search, LayoutGrid } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const EcosystemDisplay = () => {
+  const features = [
+    {
+      name: "VibeWrite",
+      title: "AI Voice Writing Tool",
+      description: "Transform your thoughts into eloquent text with AI-powered voice recognition.",
+      icon: "microphone",
+    },
+    {
+      name: "VibeList",
+      title: "To-Do List App",
+      description: "Organize your tasks with a modern, intuitive to-do list application.",
+      icon: "check-square",
+    },
+    {
+      name: "VibeJourney",
+      title: "AI Image Generation",
+      description: "Create stunning visuals with our AI-powered image generation tool.",
+      icon: "image",
+    },
+    {
+      name: "VibeSearch",
+      title: "AI-Powered Search",
+      description: "Find exactly what you're looking for with our intelligent search technology.",
+      icon: "search",
+    },
+    {
+      name: "VibeRiley",
+      title: "Portfolio Experience",
+      description: "Explore a curated collection of work and experiences.",
+      icon: "layout-grid",
+    },
+  ];
+
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case "microphone":
+        return <Mic className="w-6 h-6 text-[#2c5dcf]" />;
+      case "check-square":
+        return <CheckSquare className="w-6 h-6 text-[#2c5dcf]" />;
+      case "image":
+        return <Image className="w-6 h-6 text-[#2c5dcf]" />;
+      case "search":
+        return <Search className="w-6 h-6 text-[#2c5dcf]" />;
+      case "layout-grid":
+        return <LayoutGrid className="w-6 h-6 text-[#2c5dcf]" />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div className="lg:col-span-3 my-20">
-      <div className="bg-[#D3E4FD] text-[#221F26] rounded-2xl p-12 relative overflow-hidden min-h-[600px]">
+    <div className="lg:col-span-3 my-12">
+      <div className="bg-[#D3E4FD] text-[#221F26] rounded-2xl p-12 relative overflow-hidden min-h-[600px] flex items-center">
         {/* Grid Background */}
         <div className="absolute inset-0" 
           style={{
@@ -16,69 +66,30 @@ export const EcosystemDisplay = () => {
           }} 
         />
         
-        <div className="relative z-10 grid grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {/* First Row */}
-          <div className="col-span-3 flex justify-center mb-8">
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl flex items-center gap-6 w-64">
-              <div className="bg-[#2c5dcf]/10 p-3 rounded-xl">
-                <Mic className="w-6 h-6 text-[#2c5dcf]" />
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto w-full">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl hover:shadow-lg transition-shadow"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="bg-[#2c5dcf]/10 p-3 rounded-xl">
+                    {getIcon(feature.icon)}
+                  </div>
+                  <span className="text-sm font-light text-[#2c5dcf] py-1 px-3 bg-[#2c5dcf]/5 rounded-full">
+                    {feature.name}
+                  </span>
+                </div>
+                <h3 className="text-xl font-medium text-[#221F26]">{feature.title}</h3>
+                <p className="text-gray-600 text-sm">{feature.description}</p>
               </div>
-              <div>
-                <h3 className="font-medium text-[#221F26]">Voice Writing</h3>
-                <p className="text-sm text-gray-600">AI-powered dictation</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Middle Row */}
-          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl flex items-center gap-6">
-            <div className="bg-[#2c5dcf]/10 p-3 rounded-xl">
-              <CheckSquare className="w-6 h-6 text-[#2c5dcf]" />
-            </div>
-            <div>
-              <h3 className="font-medium text-[#221F26]">Tasks</h3>
-              <p className="text-sm text-gray-600">Smart lists</p>
-            </div>
-          </div>
-
-          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl flex items-center gap-6">
-            <div className="bg-[#2c5dcf]/10 p-3 rounded-xl">
-              <Palette className="w-6 h-6 text-[#2c5dcf]" />
-            </div>
-            <div>
-              <h3 className="font-medium text-[#221F26]">AI Art</h3>
-              <p className="text-sm text-gray-600">Image gen</p>
-            </div>
-          </div>
-
-          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl flex items-center gap-6">
-            <div className="bg-[#2c5dcf]/10 p-3 rounded-xl">
-              <Search className="w-6 h-6 text-[#2c5dcf]" />
-            </div>
-            <div>
-              <h3 className="font-medium text-[#221F26]">Search</h3>
-              <p className="text-sm text-gray-600">AI-powered</p>
-            </div>
-          </div>
-
-          {/* Bottom Row */}
-          <div className="col-span-3 flex justify-center mt-8">
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl flex items-center gap-6 w-64">
-              <div className="bg-[#2c5dcf]/10 p-3 rounded-xl">
-                <Smartphone className="w-6 h-6 text-[#2c5dcf]" />
-              </div>
-              <div>
-                <h3 className="font-medium text-[#221F26]">Mobile Apps</h3>
-                <p className="text-sm text-gray-600">Cross-platform</p>
-              </div>
-            </div>
-          </div>
+            </motion.div>
+          ))}
         </div>
-
-        <p className="text-[#221F26] font-medium text-lg max-w-2xl mx-auto text-center mt-16">
-          Our suite of tools work seamlessly together, creating a powerful ecosystem 
-          that enhances your productivity and creativity.
-        </p>
       </div>
     </div>
   );
