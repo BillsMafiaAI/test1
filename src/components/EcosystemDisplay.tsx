@@ -1,5 +1,5 @@
 
-import { Circle, Square } from "lucide-react";
+import { Mic, CheckSquare, Palette, Search, Smartphone } from "lucide-react";
 
 export const EcosystemDisplay = () => {
   return (
@@ -11,38 +11,35 @@ export const EcosystemDisplay = () => {
         <div className="relative z-10 w-full h-[400px]">
           {/* Central Element */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="relative">
-              <div className="w-20 h-20 rounded-full bg-[#2c5dcf] p-1">
-                <div className="w-full h-full rounded-full bg-[#0B0E18] flex items-center justify-center">
-                  <Circle className="w-8 h-8 text-[#2c5dcf]" />
-                </div>
+            <div className="w-16 h-16 rounded-full bg-[#2c5dcf]/10 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-[#2c5dcf]/20 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-[#2c5dcf] flex items-center justify-center" />
               </div>
-              <div className="absolute -inset-4 border border-[#2c5dcf]/20 rounded-full" />
             </div>
           </div>
 
-          {/* Static App Icons */}
+          {/* App Icons */}
           {[
-            { x: "-120px", y: "-80px", icon: "🎙️" },
-            { x: "120px", y: "-80px", icon: "✅" },
-            { x: "-160px", y: "60px", icon: "🎨" },
-            { x: "160px", y: "60px", icon: "🔍" },
-            { x: "0px", y: "120px", icon: "📱" }
-          ].map((app, index) => (
+            { x: "-120px", y: "-80px", Icon: Mic },
+            { x: "120px", y: "-80px", Icon: CheckSquare },
+            { x: "-160px", y: "60px", Icon: Palette },
+            { x: "160px", y: "60px", Icon: Search },
+            { x: "0px", y: "120px", Icon: Smartphone }
+          ].map(({ x, y, Icon }, index) => (
             <div
               key={index}
               className="absolute left-1/2 top-1/2"
               style={{
-                transform: `translate(calc(-50% + ${app.x}), calc(-50% + ${app.y}))`
+                transform: `translate(calc(-50% + ${x}), calc(-50% + ${y}))`
               }}
             >
-              <div className="w-12 h-12 bg-white rounded-xl shadow-lg flex items-center justify-center">
-                <span className="text-xl">{app.icon}</span>
+              <div className="w-12 h-12 bg-white rounded-lg shadow-lg flex items-center justify-center">
+                <Icon className="w-5 h-5 text-[#0B0E18]" />
               </div>
             </div>
           ))}
 
-          {/* Static Connection Lines */}
+          {/* Connection Lines */}
           <svg className="absolute inset-0 w-full h-full">
             {[
               { x1: "50%", y1: "50%", x2: "35%", y2: "35%" },
@@ -57,7 +54,7 @@ export const EcosystemDisplay = () => {
                 y1={line.y1}
                 x2={line.x2}
                 y2={line.y2}
-                stroke="rgba(44,93,207,0.2)"
+                stroke="rgba(44,93,207,0.15)"
                 strokeWidth="1"
               />
             ))}
