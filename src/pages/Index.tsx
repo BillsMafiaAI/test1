@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { FeatureCard } from "@/components/FeatureCard";
 
@@ -87,29 +86,98 @@ const Index = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="bg-gray-900 text-white rounded-2xl p-12 text-center">
-                <h2 className="text-4xl font-extralight mb-6">A Complete Ecosystem of Tools</h2>
-                <p className="text-gray-400 font-light text-lg max-w-2xl mx-auto">
-                  Our suite of tools work seamlessly together, creating a powerful ecosystem 
-                  that enhances your productivity and creativity. From voice-to-text to AI-powered 
-                  search, every tool is designed to work in harmony.
-                </p>
-                <div className="mt-8 flex justify-center space-x-4">
-                  <motion.div 
-                    className="w-2 h-2 bg-[#2c5dcf] rounded-full"
-                    animate={{ scale: [1, 1.5, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                  <motion.div 
-                    className="w-2 h-2 bg-[#2c5dcf] rounded-full"
-                    animate={{ scale: [1.5, 1, 1.5] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                  <motion.div 
-                    className="w-2 h-2 bg-[#2c5dcf] rounded-full"
-                    animate={{ scale: [1, 1.5, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
+              <div className="bg-gray-900 text-white rounded-2xl p-12 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(44,93,207,0.1),transparent_70%)]" />
+                
+                <div className="relative z-10">
+                  <div className="flex justify-center items-center mb-12">
+                    <div className="relative w-[600px] h-[300px]">
+                      {/* Central Hub */}
+                      <motion.div
+                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#2c5dcf] rounded-full flex items-center justify-center"
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                      >
+                        <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center">
+                          <span className="text-2xl">🔮</span>
+                        </div>
+                      </motion.div>
+
+                      {/* Orbiting Elements */}
+                      {[0, 72, 144, 216, 288].map((degree, index) => (
+                        <motion.div
+                          key={degree}
+                          className="absolute left-1/2 top-1/2 w-12 h-12 -ml-6 -mt-6"
+                          initial={{ rotate: degree }}
+                          animate={{ 
+                            rotate: [degree, degree + 360],
+                            scale: [1, 1.2, 1]
+                          }}
+                          transition={{ 
+                            rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                            scale: { duration: 2, repeat: Infinity, delay: index * 0.3 }
+                          }}
+                        >
+                          <div 
+                            className="relative w-full h-full"
+                            style={{ transform: `rotate(${-degree}deg)` }}
+                          >
+                            <div className="absolute top-[-60px] left-1/2 -translate-x-1/2 w-8 h-8 bg-white rounded-lg shadow-lg flex items-center justify-center">
+                              {index === 0 && <span>🎙️</span>}
+                              {index === 1 && <span>✅</span>}
+                              {index === 2 && <span>🎨</span>}
+                              {index === 3 && <span>🔍</span>}
+                              {index === 4 && <span>📱</span>}
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+
+                      {/* Connecting Lines */}
+                      <svg className="absolute inset-0 w-full h-full" style={{ transform: 'rotate(0deg)' }}>
+                        {[0, 72, 144, 216, 288].map((degree) => (
+                          <motion.path
+                            key={degree}
+                            d={`M ${300} ${150} L ${300 + Math.cos(degree * Math.PI / 180) * 120} ${150 + Math.sin(degree * Math.PI / 180) * 120}`}
+                            stroke="rgba(44,93,207,0.2)"
+                            strokeWidth="2"
+                            fill="none"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: [0, 1, 0] }}
+                            transition={{ duration: 3, repeat: Infinity, delay: degree / 360 }}
+                          />
+                        ))}
+                      </svg>
+
+                      {/* Particle Effects */}
+                      {[...Array(20)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="absolute left-1/2 top-1/2 w-1 h-1 bg-[#2c5dcf] rounded-full"
+                          initial={{ 
+                            x: 0, 
+                            y: 0, 
+                            opacity: 0 
+                          }}
+                          animate={{ 
+                            x: [0, (Math.random() - 0.5) * 200],
+                            y: [0, (Math.random() - 0.5) * 200],
+                            opacity: [0, 1, 0]
+                          }}
+                          transition={{ 
+                            duration: 2 + Math.random() * 2,
+                            repeat: Infinity,
+                            delay: i * 0.2
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="text-gray-400 font-light text-lg max-w-2xl mx-auto text-center">
+                    Our suite of tools work seamlessly together, creating a powerful ecosystem 
+                    that enhances your productivity and creativity.
+                  </p>
                 </div>
               </div>
             </motion.div>
